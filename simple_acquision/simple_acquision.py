@@ -85,7 +85,7 @@ class MainWindow(QMainWindow):
         super(MainWindow,self).__init__()
 
         self.setWindowTitle('Pulse Visualizer')
-        self.setWindowIcon(QIcon(BASE_FOLDER + r'\pyqt_analysis\icons\window_icon.png'))
+        self.setWindowIcon(QIcon(BASE_FOLDER + r'\icons\window_icon.png'))
 
         '''
         --------------------------setting menubar-------------------------------
@@ -122,7 +122,7 @@ class MainWindow(QMainWindow):
         --------------------------setting widgets-------------------------------
         '''
 
-        exitProgram = QAction(QIcon(BASE_FOLDER + r'\pyqt_analysis\icons\exit_program.png'),'&Exit',self)
+        exitProgram = QAction(QIcon(BASE_FOLDER + r'\icons\exit_program.png'),'&Exit',self)
         exitProgram.setShortcut("Ctrl+W")
         exitProgram.setStatusTip('Close the Program')
         exitProgram.triggered.connect(self.exit_program)
