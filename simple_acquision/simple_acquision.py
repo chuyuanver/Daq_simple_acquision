@@ -186,6 +186,7 @@ class MainWindow(QMainWindow):
         # method called start_acq is run
         startAcq = QPushButton('START',self)
         startAcq.clicked.connect(self.start_acq)
+        self.start_status = False
 
         # set a stop acquisition button
         # set the stop button to be a check button (if pushed won't bounce
@@ -268,9 +269,11 @@ class MainWindow(QMainWindow):
         class method plot_data is called
         3. start the worker in a new thread
         '''
-        worker = ReadDataWorker(self.sig_task, self.stopAcq)
-        worker.signals.data_measured.connect(self.plot_data)
-        self.threadpool.start(worker)
+        if self.start_status == False:
+            worker = ReadDataWorker(self.sig_task, self.stopAcq)
+            worker.signals.data_measured.connect(self.plot_data)
+            self.threadpool.start(worker)
+            self.start_status = True
 
     def plot_data(self, data):
         '''
@@ -285,6 +288,7 @@ class MainWindow(QMainWindow):
         '''
         if self.stopAcq.isChecked():
             self.stopAcq.toggle()
+            self.start_status == False
         self.ax.clear()
         self.ax.plot(self.time_data, data)
 
