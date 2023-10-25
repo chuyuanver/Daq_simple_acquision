@@ -237,7 +237,7 @@ class MainWindow(QMainWindow):
         # add the voltage channel with physical channel name, also set the
         # channel read mode to be differential
         self.sig_task.ai_channels.add_ai_voltage_chan(physical_channel = r"Dev1/ai1",
-                terminal_config = constants.TerminalConfiguration.DIFFERENTIAL)
+                terminal_config = constants.TerminalConfiguration.DIFF)
         # set the timing for the signal task, the sampling rate, sample number
         # and sample mode are set here
         self.sig_task.timing.cfg_samp_clk_timing(rate = samp_rate,
